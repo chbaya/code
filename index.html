@@ -5,14 +5,12 @@
     <title>AI Smart Agriculture Robot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
-        /* ====== GLOBAL ====== */
         * {margin:0; padding:0; box-sizing:border-box; font-family: Arial, sans-serif;}
         body {background:#eef2f3; color:#333; line-height:1.6;}
         img {width:100%; max-width:500px; display:block; margin:20px auto; border-radius:10px;}
         section {background:white; max-width:900px; margin:40px auto; padding:20px; border-radius:10px;}
         h1, h2 {color:#1e8449; margin-bottom:10px;}
-        
-        /* ====== NAV ====== */
+
         nav {
             background:#2e7d32; display:flex; flex-wrap:wrap; justify-content:center; padding:15px;
             position: sticky; top:0; z-index:100;
@@ -21,19 +19,12 @@
             color:white; text-decoration:none; margin:8px; font-weight:bold; padding:5px 10px;
         }
         nav a:hover {background:#145a32; border-radius:5px;}
-        
-        /* ====== SCROLL BEHAVIOR ====== */
+
         html {scroll-behavior:smooth;}
-        
-        /* ====== IMAGE TEXT LAYOUT ====== */
-        .image-text {display:flex; gap:20px; align-items:center; margin:40px auto; max-width:900px;}
-        .image-text img {width:300px;}
-        @media (max-width:768px) {.image-text {flex-direction:column; text-align:center;}}
     </style>
 </head>
 <body>
 
-<!-- ====== NAVIGATION ====== -->
 <nav>
     <a href="#intro">Introduction</a>
     <a href="#problem">Problem</a>
@@ -46,56 +37,91 @@
     <a href="#code">Code</a>
 </nav>
 
-<!-- ====== INTRODUCTION ====== -->
 <section id="intro">
     <h1>AI Smart Agriculture Robot</h1>
     <img src="robot.jpg" alt="Robot">
     <p>
-        This project presents an AI-based robot for smart irrigation
-        and automatic weed detection. It combines Artificial Intelligence,
-        IoT, and Robotics for sustainable farming.
+        This project presents an AI-based smart agriculture robot designed
+        to automate irrigation and weed control. It uses Artificial Intelligence,
+        sensors, and IoT to improve crop health while reducing water usage
+        and manual labor.
     </p>
 </section>
 
-<!-- ====== PROBLEM ====== -->
 <section id="problem">
     <h2>Problem</h2>
     <img src="irrigation.jpg" alt="Overwatering problem">
-    <ul>
-        <li>Over-watering wastes water and damages crops.</li>
-        <li>Under-watering causes plant stress and low yield.</li>
-        <li>Manual weed removal is slow and costly.</li>
-        <li>Excessive herbicide harms crops and soil.</li>
-    </ul>
+   <p>
+    In Tunisia, most farms still rely on traditional agricultural methods.
+    There are almost no smart robots used in daily farming, and irrigation
+    is often done manually or based on fixed schedules. Farmers usually
+    do not know exactly how much water each plant needs, which leads to
+    over-watering in some areas and under-watering in others.
+</p>
+
+<ul>
+    <li>Most farms do not use smart or automated systems.</li>
+    <li>Farmers estimate water needs by experience, not data.</li>
+    <li>Water resources are limited, especially during drought seasons.</li>
+    <li>Irrigation systems waste water due to lack of monitoring.</li>
+    <li>Weed removal is done manually or by spraying chemicals everywhere.</li>
+    <li>There is no real-time data to help farmers make decisions.</li>
+</ul>
+
 </section>
 
-<!-- ====== SOLUTION ====== -->
 <section id="solution">
     <h2>Solution</h2>
     <img src="weeds.jpg" alt="Weed detection">
     <p>
-        The robot waters plants only when needed and removes weeds automatically
-        using AI vision. Data is sent to a dashboard via IoT.
-    </p>
+    This project provides a smart and practical solution adapted to Tunisian farms.
+    Instead of relying on estimation or fixed irrigation schedules, the robot uses
+    sensors and Artificial Intelligence to make decisions based on real plant needs.
+    The system is designed to be affordable, easy to use, and suitable for small
+    and medium farms commonly found in Tunisia.
+</p>
+
+<ul>
+    <li>The robot measures soil moisture to know exactly when plants need water.</li>
+    <li>Water is supplied only when necessary, reducing waste.</li>
+    <li>AI vision detects weeds and treats only the affected area.</li>
+    <li>Farmers do not need technical knowledge to use the system.</li>
+    <li>The system helps save water during dry and drought seasons.</li>
+    <li>Reduces manual labor and improves productivity.</li>
+</ul>
+
 </section>
 
-<!-- ====== SYSTEM ====== -->
 <section id="system">
     <h2>System Architecture</h2>
     <img src="system.jpg" alt="System architecture">
     <pre>
 ESP32-CAM → Raspberry Pi (YOLO AI)
                     ↓
-             Arduino / ESP32
+              Arduino Mega
                     ↓
-         Motors – Pump – Spray Valve
+         Motors – Pump – Spray System
+                    ↓
+              IoT → Farmer
     </pre>
 </section>
 
-<!-- ====== HARDWARE ====== -->
 <section id="hardware">
     <h2>Hardware</h2>
     <img src="banner.jpg" alt="Hardware">
+
+    <p>
+        The robot uses an Arduino Mega for low-level control of motors,
+        pumps, sensors, and relays. A Raspberry Pi 4 handles AI processing
+        and computer vision using YOLO and OpenCV. The ESP32-CAM captures
+        real-time images for weed detection. Environmental sensors measure
+        soil moisture, temperature, humidity, light, and rain conditions.
+        The irrigation and spraying systems operate automatically based on
+        sensor data and AI decisions. Through Wi-Fi communication, the robot
+        sends real-time data such as soil moisture, water usage, and system
+        status to the farmer via an IoT dashboard or mobile application.
+    </p>
+
     <ul>
         <li>ESP32-CAM</li>
         <li>Raspberry Pi 4</li>
@@ -103,64 +129,79 @@ ESP32-CAM → Raspberry Pi (YOLO AI)
         <li>Soil Moisture Sensors</li>
         <li>DHT22 Temperature & Humidity Sensor</li>
         <li>Ultrasonic Sensors</li>
-        <li>GPS Module</li>
         <li>Water Pump & Spray System</li>
+        <li>Wi-Fi Communication (IoT)</li>
     </ul>
 </section>
 
-<!-- ====== AI ====== -->
 <section id="ai">
     <h2>Artificial Intelligence</h2>
     <img src="ai.jpg" alt="AI Detection">
     <p>
-        YOLO and OpenCV run on Raspberry Pi for real-time weed detection.
-        When a weed is detected, the Arduino activates the spraying mechanism.
+        The Raspberry Pi runs a YOLO deep learning model trained to recognize
+        weeds among crops. OpenCV processes camera images in real time.
+        When a weed is detected, its position is calculated and sent to the
+        Arduino, which activates the spraying or cutting mechanism only on
+        the detected weed.
     </p>
 </section>
 
-<!-- ====== HOW IT WORKS ====== -->
 <section id="how">
     <h2>How It Works</h2>
     <p>
-        1. Robot moves along crop rows.<br>
-        2. Sensors read soil and environmental conditions.<br>
-        3. ESP32-CAM captures images.<br>
-        4. Raspberry Pi AI detects weeds.<br>
-        5. Arduino controls irrigation and spraying.<br>
-        6. IoT dashboard shows live data.
+        1. The robot moves along the crop rows automatically.<br>
+        2. Soil moisture, temperature, humidity, and light sensors collect data.<br>
+        3. ESP32-CAM captures live images of the plants and soil surface.<br>
+        4. Raspberry Pi processes images using YOLO to detect weeds.<br>
+        5. If a weed is detected, the system calculates its position.<br>
+        6. Arduino activates the spray or cutter only at the weed location.<br>
+        7. If soil moisture is low, the irrigation pump is activated automatically.<br>
+        8. All sensor data, water usage, and system status are sent via IoT
+           to the farmer’s phone or dashboard in real time.
     </p>
 </section>
 
-<!-- ====== RESULTS ====== -->
 <section id="results">
     <h2>Results & Benefits</h2>
     <ul>
-        <li>💧 Saves water</li>
-        <li>🌱 Improves crop health</li>
-        <li>☠ Reduces herbicide usage</li>
-        <li>🤖 Fully automated system</li>
-        <li>🌍 Environmentally friendly</li>
+        <li>💧 Significant water saving</li>
+        <li>🌱 Healthier crops and higher yield</li>
+        <li>☠ Reduced chemical usage</li>
+        <li>🤖 Less manual labor</li>
+        <li>📱 Live monitoring for farmers</li>
+    </ul>
+
+    <h3>Future Improvements</h3>
+    <ul>
+        <li>📍 Add GPS for large farm navigation</li>
+        <li>🗺 Field mapping and coverage tracking</li>
+        <li>📊 Advanced data analytics for farmers</li>
+        <li>☀ Solar-powered operation</li>
     </ul>
 </section>
 
-<!-- ====== CODE ====== -->
-<section class="code">
+<section class="code" id="code">
   <h2>Source Code</h2>
 
   <div class="code-box">
-    <h3>ESP32-CAM_FULL_CODE.ino(arduino)</h3>
-    <a href="https://github.com/chbaya/smart-agriculture-ai-robot/blob/main/ESP32-CAM_FULL_CODE.ino" download>ESP32-CAM_FULL_CODE.ino</a>
+    <h3>ESP32-CAM_FULL_CODE.ino</h3>
+    <a href="https://github.com/chbaya/smart-agriculture-ai-robot/blob/main/ESP32-CAM_FULL_CODE.ino">Download</a>
   </div>
 
   <div class="code-box">
-    <h3>PYTHON YOLO + ESP32-CAM CODE.py(python)</h3>
-    <a href="https://github.com/chbaya/smart-agriculture-ai-robot/blob/main/PYTHON%20YOLO%20%2B%20ESP32-CAM%20CODE.py" download>PYTHON YOLO + ESP32-CAM CODE.py</a>
+    <h3>YOLO_AI_DETECTION.py</h3>
+    <a href="https://github.com/chbaya/smart-agriculture-ai-robot/blob/main/PYTHON%20YOLO%20%2B%20ESP32-CAM%20CODE.py">Download</a>
   </div>
 
   <div class="code-box">
-    <h3>SPRAY_CONTROL_CODE.ino(python)</h3>
-    <a href="https://github.com/chbaya/smart-agriculture-ai-robot/blob/main/SPRAY_CONTROL_CODE.ino" download>SPRAY_CONTROL_CODE.ino</a>
+    <h3>SPRAY_CONTROL_CODE.ino</h3>
+    <a href="https://github.com/chbaya/smart-agriculture-ai-robot/blob/main/SPRAY_CONTROL_CODE.ino">Download</a>
   </div>
 </section>
+<footer style="text-align:center; padding:20px; background:#2e7d32; color:white; margin-top:40px;">
+    © 2026 | Smart Robot farm  | Created by youssef & smail 
+</footer>
+
+
 </body>
 </html>
